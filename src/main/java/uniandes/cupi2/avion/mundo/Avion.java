@@ -308,12 +308,36 @@ public class Avion {
     }
 
     /**
+     * Cuenta el número de pasajeros en el avión con cédula impar, que han reservado sillas de cualquier clase y devuelve dicho valor
+     *
+     * @return el número de pasajeros en el avión con cédula impar
+     */
+    private int darNumeroDePasajerosConCedulaImpar() {
+        // Inicialmente, el número de pasajeros con cédula impar es 0
+        int numeroPasajerosConCedulaImpar = 0;
+
+        // Se cuentan los pasajeros con cédula impar para las sillas ejecutivas que estén reservadas
+        for (Silla silla : sillasEjecutivas) {
+            if (silla.sillaAsignada() && silla.darPasajero().esCedulaImpar()) {
+                numeroPasajerosConCedulaImpar++;
+            }
+        }
+        // Se cuentan los pasajeros con cédula impar para las sillas de clase económica que estén reservadas
+        for (Silla silla : sillasEconomicas) {
+            if (silla.sillaAsignada() && silla.darPasajero().esCedulaImpar()) {
+                numeroPasajerosConCedulaImpar++;
+            }
+        }
+        return numeroPasajerosConCedulaImpar;
+    }
+
+    /**
      * Método para la extensión 1.
      *
      * @return Respuesta 1.
      */
     public String metodo1() {
-        return "Respuesta 1";
+        return "El número de pasajeros con cédula impar es: " + darNumeroDePasajerosConCedulaImpar();
     }
 
     /**
